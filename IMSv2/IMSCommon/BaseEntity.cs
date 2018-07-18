@@ -101,4 +101,14 @@ namespace IMSv2.IMSCommon
         DESC = 1,
         ASC = 2
     }
+    [Flags]
+    public enum ROLES
+    {
+        NONE = 0,
+        USER = 1,
+        STUDENT = 2,
+        LECTURER = 4,
+        HrEmployee = 8,
+        ADMIN = 16
+    }
 }
