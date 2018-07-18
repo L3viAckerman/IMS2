@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IMSv2.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace IMSv2
 {
@@ -33,6 +36,23 @@ namespace IMSv2
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Scan(scan => scan
+                .FromAssemblyOf<ITransientService>()
+                    .AddClasses(classes => classes.AssignableTo<ITransientService>())
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime()
+                    .AddClasses(classes => classes.AssignableTo<IScopedService>())
+                        .As<IScopedService>()
+                        .WithScopedLifetime());
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
