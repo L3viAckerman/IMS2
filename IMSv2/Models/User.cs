@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IMS.Models
+namespace IMSv2.Models
 {
     public partial class User
     {
         public Guid Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public int Role { get; set; }
-        public long Cx { get; set; }
+        public int? Role { get; set; }
 
-        public Admin Admin { get; set; }
-        public HrEmployee HrEmployee { get; set; }
-        public Lecturer Lecturer { get; set; }
-        public Student Student { get; set; }
+        public Hremployee Id1 { get; set; }
+        public Lecture Id2 { get; set; }
+        public Student Id3 { get; set; }
+        public Admin IdNavigation { get; set; }
     }
 }

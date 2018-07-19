@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IMS.Models
+namespace IMSv2.Models
 {
     public partial class Company
     {
         public Company()
         {
-            HrEmployees = new HashSet<HrEmployee>();
+            Hremployee = new HashSet<Hremployee>();
             InternNews = new HashSet<InternNews>();
-            InternshipCourses = new HashSet<InternshipCourse>();
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public long Cx { get; set; }
         public string Address { get; set; }
 
-        public ICollection<HrEmployee> HrEmployees { get; set; }
+        public ICollection<Hremployee> Hremployee { get; set; }
         public ICollection<InternNews> InternNews { get; set; }
-        public ICollection<InternshipCourse> InternshipCourses { get; set; }
     }
 }

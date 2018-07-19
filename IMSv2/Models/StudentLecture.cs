@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace IMSv2.Models
 {
-    public partial class InternFollow
+    public partial class StudentLecture
     {
         public Guid Id { get; set; }
         public Guid? StudentId { get; set; }
-        public Guid? InternNewsId { get; set; }
-        public int? Status { get; set; }
+        public Guid? LectureId { get; set; }
 
-        public InternNews InternNews { get; set; }
+        public Lecture Lecture { get; set; }
         public Student Student { get; set; }
     }
 }

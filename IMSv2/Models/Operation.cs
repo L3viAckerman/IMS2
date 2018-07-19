@@ -1,9 +1,7 @@
-﻿using IMSv2.IMSCommon;
-using IMSv2.Modules;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace IMS.Models
+namespace IMSv2.Models
 {
     public partial class Operation
     {
@@ -11,6 +9,5 @@ namespace IMS.Models
         public string Name { get; set; }
         public string Link { get; set; }
         public string Method { get; set; }
-        public ROLES Role { get; set; }
     }
 }
