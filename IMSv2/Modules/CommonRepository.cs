@@ -1,5 +1,4 @@
-﻿using IMS.Models;
-using IMSv2.IMSCommon;
+﻿using IMSv2.IMSCommon;
 using IMSv2.Models;
 using System;
 using System.Collections.Generic;
@@ -11,8 +10,8 @@ namespace IMSv2.Modules
 {
     public abstract class CommonRepository<T> where T : Base
     {
-        protected readonly IMSContext context;
-        public CommonRepository(IMSContext context)
+        protected readonly IMSV2Context context;
+        public CommonRepository(IMSV2Context context)
         {
             this.context = context;
         }

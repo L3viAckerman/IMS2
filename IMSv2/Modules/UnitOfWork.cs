@@ -1,5 +1,4 @@
-﻿using IMS.Models;
-using IMSv2.Models;
+﻿using IMSv2.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace IMSv2.Modules
 
     public class UnitOfWork : IUnitOfWork
     {
-        private IMSContext context;
+        private IMSV2Context context;
         private IDbContextTransaction _transaction;
 
         private void InitTransaction()
@@ -27,10 +26,10 @@ namespace IMSv2.Modules
 
         public UnitOfWork()
         {
-            this.context = new IMSContext();
+            this.context = new IMSV2Context();
         }
 
-        public UnitOfWork(IMSContext context)
+        public UnitOfWork(IMSV2Context context)
         {
             this.context = context;
         }

@@ -4,20 +4,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace IMSv2.Models
 {
-    public partial class imsv2Context : DbContext
+    public partial class IMSV2Context : DbContext
     {
-        public imsv2Context()
+        public IMSV2Context()
         {
         }
 
-        public imsv2Context(DbContextOptions<imsv2Context> options)
+        public IMSV2Context(DbContextOptions<IMSV2Context> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Company> Company { get; set; }
-        public virtual DbSet<Hremployee> Hremployee { get; set; }
+        public virtual DbSet<HrEmployee> HrEmployee { get; set; }
         public virtual DbSet<InternFollow> InternFollow { get; set; }
         public virtual DbSet<InternNews> InternNews { get; set; }
         public virtual DbSet<InternReport> InternReport { get; set; }
@@ -35,7 +35,7 @@ namespace IMSv2.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("data source=den1.mssql5.gear.host;initial catalog=imsv2;persist security info=True;user id=imsv2;password=Qy1?~4kE16yY;multipleactiveresultsets=True;");
+                optionsBuilder.UseSqlServer("data source=den1.mssql5.gear.host;initial catalog=IMSV2;persist security info=True;user id=imsv2;password=Qy1?~4kE16yY;multipleactiveresultsets=True;");
             }
         }
 
@@ -51,12 +51,12 @@ namespace IMSv2.Models
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
-            modelBuilder.Entity<Hremployee>(entity =>
+            modelBuilder.Entity<HrEmployee>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.HasOne(d => d.Company)
-                    .WithMany(p => p.Hremployee)
+                    .WithMany(p => p.HrEmployee)
                     .HasForeignKey(d => d.CompanyId)
                     .HasConstraintName("FK_Hremployee_Company");
             });

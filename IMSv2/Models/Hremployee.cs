@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IMSv2.Models
 {
-    public partial class Hremployee
+    public partial class HrEmployee
     {
         public Guid Id { get; set; }
         public Guid? CompanyId { get; set; }

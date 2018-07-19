@@ -7,7 +7,7 @@ namespace IMSv2.Models
     {
         public Company()
         {
-            Hremployee = new HashSet<Hremployee>();
+            HrEmployee = new HashSet<HrEmployee>();
             InternNews = new HashSet<InternNews>();
         }
 
@@ -15,7 +15,7 @@ namespace IMSv2.Models
         public string Name { get; set; }
         public string Address { get; set; }
 
-        public ICollection<Hremployee> Hremployee { get; set; }
+        public ICollection<HrEmployee> HrEmployee { get; set; }
         public ICollection<InternNews> InternNews { get; set; }
     }
 }
