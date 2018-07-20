@@ -18,7 +18,7 @@ namespace IMSv2.Models
         public string Phone { get; set; }
         public string FullName { get; set; }
 
-        public User User { get; set; }
+        public User IdNavigation { get; set; }
         public ICollection<LectureFollow> LectureFollow { get; set; }
         public ICollection<StudentLecture> StudentLecture { get; set; }
     }

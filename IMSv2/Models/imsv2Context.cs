@@ -44,6 +44,12 @@ namespace IMSv2.Models
             modelBuilder.Entity<Admin>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Admin)
+                    .HasForeignKey<Admin>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Admin_User");
             });
 
             modelBuilder.Entity<Company>(entity =>
@@ -59,6 +65,12 @@ namespace IMSv2.Models
                     .WithMany(p => p.HrEmployee)
                     .HasForeignKey(d => d.CompanyId)
                     .HasConstraintName("FK_Hremployee_Company");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.HrEmployee)
+                    .HasForeignKey<HrEmployee>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_HrEmployee_User");
             });
 
             modelBuilder.Entity<InternFollow>(entity =>
@@ -123,6 +135,12 @@ namespace IMSv2.Models
             modelBuilder.Entity<Lecture>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Lecture)
+                    .HasForeignKey<Lecture>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Lecture_User");
             });
 
             modelBuilder.Entity<LectureFollow>(entity =>
@@ -163,6 +181,12 @@ namespace IMSv2.Models
                 entity.Property(e => e.Birthday).HasColumnType("datetime");
 
                 entity.Property(e => e.Gpa).HasColumnName("GPA");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Student)
+                    .HasForeignKey<Student>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Student_User");
             });
 
             modelBuilder.Entity<StudentLecture>(entity =>
@@ -183,30 +207,6 @@ namespace IMSv2.Models
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.HasOne(d => d.IdNavigation)
-                    .WithOne(p => p.User)
-                    .HasForeignKey<User>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_User_Admin");
-
-                entity.HasOne(d => d.Id1)
-                    .WithOne(p => p.User)
-                    .HasForeignKey<User>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_User_Hremployee");
-
-                entity.HasOne(d => d.Id2)
-                    .WithOne(p => p.User)
-                    .HasForeignKey<User>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_User_Lecture");
-
-                entity.HasOne(d => d.Id3)
-                    .WithOne(p => p.User)
-                    .HasForeignKey<User>(d => d.Id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_User_Student");
             });
         }
     }

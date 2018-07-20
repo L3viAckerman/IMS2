@@ -35,7 +35,7 @@ namespace IMSv2.Models
         public string Note { get; set; }
         public string Hobbie { get; set; }
 
-        public User User { get; set; }
+        public User IdNavigation { get; set; }
         public ICollection<InternFollow> InternFollow { get; set; }
         public ICollection<InternshipCourse> InternshipCourse { get; set; }
         public ICollection<LectureFollow> LectureFollow { get; set; }

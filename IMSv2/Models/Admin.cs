@@ -11,6 +11,6 @@ namespace IMSv2.Models
         public string Vnumail { get; set; }
         public string Phone { get; set; }
 
-        public User User { get; set; }
+        public User IdNavigation { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace IMSv2.Models
         public string Password { get; set; }
         public int? Role { get; set; }
 
-        public HrEmployee Id1 { get; set; }
-        public Lecture Id2 { get; set; }
-        public Student Id3 { get; set; }
-        public Admin IdNavigation { get; set; }
+        public Admin Admin { get; set; }
+        public HrEmployee HrEmployee { get; set; }
+        public Lecture Lecture { get; set; }
+        public Student Student { get; set; }
     }
 }

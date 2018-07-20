@@ -12,6 +12,6 @@ namespace IMSv2.Models
         public string Phone { get; set; }
 
         public Company Company { get; set; }
-        public User User { get; set; }
+        public User IdNavigation { get; set; }
     }
 }
