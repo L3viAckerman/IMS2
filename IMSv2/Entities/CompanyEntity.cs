@@ -28,4 +28,9 @@ namespace IMSv2.Entities
             }
         }
     }
+    public class CompanySearchEntity : FilterEntity
+    {
+        public Guid? Id { get; set; }
+        public String Name { get; set; }
+    }
 }

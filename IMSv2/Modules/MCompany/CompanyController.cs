@@ -8,12 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMSv2.Modules.MCompany
 {
-    public class CompanyController : Controller
+    [Route("api/Company")]
+    public class CompanyController : CommonController
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
     }
 }

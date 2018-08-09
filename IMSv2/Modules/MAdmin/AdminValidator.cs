@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace IMSv2.Modules.MAdmin
 {
-    public class AdminValidator
+    public interface IAdminValidator { }
+    public class AdminValidator : IAdminValidator
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using IMSv2.IMSCommon;
+﻿using IMSv2.Entities;
+using IMSv2.IMSCommon;
 using System;
 using System.Collections.Generic;
 
@@ -10,5 +11,7 @@ namespace IMSv2.Models
         {
             throw new NotImplementedException();
         }
+
+        public Admin(AdminEntity AdminEntity) : base(AdminEntity) { }
     }
 }

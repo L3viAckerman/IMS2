@@ -1,12 +1,14 @@
-﻿using System;
+﻿using IMSv2.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace IMSv2.Modules
 {
-    public class CommonController
+    public class CommonController : Controller
     {
-        //public EmployeeEntity EmployeeEntity => (User as MyPrincipal)?.EmployeeEntity;
+        public UserEntity UserEntity => (User as MyPrincipal)?.UserEntity;
     }
 }

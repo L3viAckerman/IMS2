@@ -19,4 +19,9 @@ namespace IMSv2.Entities
 
         }
     }
+    public class SearchHrEmployeeEntity : FilterEntity
+    {
+        public Guid? CompanyId { get;  }
+        public string Phone { get;  }
+    }
 }

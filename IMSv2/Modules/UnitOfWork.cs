@@ -1,4 +1,7 @@
 ﻿using IMSv2.Models;
+using IMSv2.Modules.MAdmin;
+using IMSv2.Modules.MCompany;
+using IMSv2.Modules.MHrEmployee;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,10 @@ namespace IMSv2.Modules
     public interface IUnitOfWork : ITransientService, IDisposable
     {
         void Complete();
+        IAdminRepository AdminRepository { get; }
+        ICompanyRepository CompanyRepository { get;  } 
+        IHrEmployeeRepository HrEmployeeRepository { get;  }
+
     }
 
 
@@ -17,6 +24,9 @@ namespace IMSv2.Modules
     {
         private IMSV2Context context;
         private IDbContextTransaction _transaction;
+        private IAdminRepository _adminRepository;
+        private ICompanyRepository _companyRepository;
+        private IHrEmployeeRepository _hrEmployeeRepository;
 
         private void InitTransaction()
         {
@@ -58,6 +68,36 @@ namespace IMSv2.Modules
             {
                 _transaction.Dispose();
                 _transaction = null;
+            }
+        }
+
+        public IAdminRepository AdminRepository
+        {
+            get
+            {
+                InitTransaction();
+                if (_adminRepository == null) _adminRepository = new AdminRepository(context);
+                return _adminRepository;
+            }
+        }
+
+        public ICompanyRepository CompanyRepository
+        {
+            get
+            {
+                InitTransaction();
+                if (_companyRepository == null) _companyRepository = new CompanyRepository(context);
+                return _companyRepository;
+            }
+        }
+
+        public IHrEmployeeRepository HrEmployeeRepository
+        {
+            get
+            {
+                InitTransaction();
+                if (_hrEmployeeRepository == null) _hrEmployeeRepository = new HrEmployeeRepository(context);
+                return _hrEmployeeRepository;
             }
         }
     }

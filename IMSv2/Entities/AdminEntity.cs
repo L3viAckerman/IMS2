@@ -22,4 +22,9 @@ namespace IMSv2.Entities
            
         }
     }
+    public class AdminSearchEntity : FilterEntity
+    {
+        public Guid? Id { get; set; }
+        public String Vnumail { get; set; }
+    }
 }

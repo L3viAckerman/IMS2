@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IMSv2.Modules.MCompany
 {
-    public interface ICompanyReopitory
+    public interface ICompanyRepository
     {
         int Count( CompanySearchEntity companySearchEntity);
         List<Company> Get(CompanySearchEntity companySearchEntity);
@@ -17,7 +17,7 @@ namespace IMSv2.Modules.MCompany
         bool Update(Company company);
         bool Delete(Guid Id);
     }
-    public class CompanyRepository : CommonRepository<Company> , ICompanyReopitory
+    public class CompanyRepository : CommonRepository<Company> , ICompanyRepository
     {
         public CompanyRepository(IMSV2Context iMSV2Context) : base(iMSV2Context)
         {

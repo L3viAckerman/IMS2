@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 
 namespace IMSv2.Modules.MCompany
 {
-    public class CompanyValidator
+    public interface ICompanyValidator
+    {
+
+    }
+    public class CompanyValidator : ICompanyValidator
     {
     }
 }

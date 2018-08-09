@@ -56,6 +56,10 @@ namespace IMSv2.Modules.MAdmin
 
         public bool Update(Admin Admin)
         {
+            Admin Current = context.Admin.Where(m => m.Id == Admin.Id).FirstOrDefault();
+            if (Current == null) throw new BadRequestException("Khong ton tai admin");
+            Common<Admin>.Copy(Admin, Current);
+            context.SaveChanges();
             return true;
         }
 
