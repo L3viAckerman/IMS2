@@ -48,4 +48,10 @@ namespace IMSv2.Entities
             }
         }
     }
+
+    public class SearchStudentEntity : FilterEntity
+    {
+        public string Fullname { get;  }
+        public string Vnumail { get;  }
+    }
 }

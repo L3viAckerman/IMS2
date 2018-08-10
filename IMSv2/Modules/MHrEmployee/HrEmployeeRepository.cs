@@ -26,7 +26,7 @@ namespace IMSv2.Modules.MHrEmployee
         }
         public bool Add(HrEmployee HrEmployee)
         {
-            if (HrEmployee.Id == null) HrEmployee.Id = Guid.NewGuid();
+            if (HrEmployee.Id == Guid.Empty) HrEmployee.Id = Guid.NewGuid();
             context.HrEmployee.Add(HrEmployee);
             return true; 
         }

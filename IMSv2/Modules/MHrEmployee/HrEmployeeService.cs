@@ -32,7 +32,7 @@ namespace IMSv2.Modules.MHrEmployee
         public HrEmployeeEntity Create(UserEntity UserEntity, HrEmployeeEntity HrEmployeeEntity)
         {
             if (HrEmployeeEntity == null) throw new BadRequestException("");
-            if (HrEmployeeEntity.Id == null) HrEmployeeEntity.Id = Guid.NewGuid();
+            HrEmployeeEntity.Id = Guid.NewGuid();
             HrEmployee hrEmployee = new HrEmployee(HrEmployeeEntity);
             UnitOfWork.HrEmployeeRepository.Add(hrEmployee);
             UnitOfWork.Complete();

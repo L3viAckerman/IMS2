@@ -2,6 +2,7 @@
 using IMSv2.Modules.MAdmin;
 using IMSv2.Modules.MCompany;
 using IMSv2.Modules.MHrEmployee;
+using IMSv2.Modules.MStudent;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace IMSv2.Modules
         IAdminRepository AdminRepository { get; }
         ICompanyRepository CompanyRepository { get;  } 
         IHrEmployeeRepository HrEmployeeRepository { get;  }
+        IStudentRepository  StudentRepository { get;  }
 
     }
 
@@ -27,6 +29,7 @@ namespace IMSv2.Modules
         private IAdminRepository _adminRepository;
         private ICompanyRepository _companyRepository;
         private IHrEmployeeRepository _hrEmployeeRepository;
+        private IStudentRepository _studentRepository;
 
         private void InitTransaction()
         {
@@ -100,5 +103,15 @@ namespace IMSv2.Modules
                 return _hrEmployeeRepository;
             }
         }
+        public IStudentRepository StudentRepository
+        {
+            get
+            {
+                InitTransaction();
+                if (_studentRepository == null) _studentRepository = new StudentRepository(context);
+                return _studentRepository;
+            }
+        }
+
     }
 }

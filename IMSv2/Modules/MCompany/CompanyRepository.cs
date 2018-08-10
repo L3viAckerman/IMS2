@@ -25,7 +25,7 @@ namespace IMSv2.Modules.MCompany
         }
         public bool Add(Company company)
         {
-            if (company.Id == null) company.Id = Guid.NewGuid();
+            if (company.Id == Guid.Empty) company.Id = Guid.NewGuid();
             context.Company.Add(company);
             return true;
         }
